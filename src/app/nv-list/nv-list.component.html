@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  
+    <!-- Ô tìm kiếm -->
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="searchKeyword" (input)="timKiem()" placeholder="Tìm kiếm nhân viên...">
+    </div>
+  
+    <table class="table table-bordered border border-primary">
+      <caption align="top" class="bg-warning p-1 fw-bolder">DANH SÁCH NHÂN VIÊN</caption>
+      <tr>
+        <th class="p-1 px-2">ID</th>
+        <th>Họ</th>
+        <th>Tên</th>
+        <th>Ngày sinh</th>
+        <th>Phái</th>
+        <th class="text-end p-1 px-2">Khu vực</th>
+        <th>Hành động</th>
+      </tr>
+      <tr *ngFor="let nv of filtered_nhan_vien">
+        <td class="p-1 px-2">{{nv.id}}</td>
+        <td>{{nv.ho}}</td>
+        <td>{{nv.ten}}</td>
+        <td>{{nv.ngay_sinh | date: 'dd/MM/yyyy'}}</td>
+        <td>{{nv.phai ? 'Nam' : 'Nữ'}}</td>
+        <td class="text-end p-1 px-2">{{nv.khu_vuc}}</td>
+        <td>
+          <button class="btn btn-primary me-2" (click)="suaNhanVien(nv.id)">Sửa</button>
+          <button class="btn btn-danger" (click)="xoaNhanVien(nv.id)">Xóa</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  

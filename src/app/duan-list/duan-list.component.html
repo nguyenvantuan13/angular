@@ -1,0 +1,32 @@
+<div class="container mt-3">
+    <!-- Ô tìm kiếm -->
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="searchKeyword" (input)="timKiem()" placeholder="Tìm kiếm dự án...">
+    </div>
+    
+    <table class="table table-bordered border border-primary">
+      <caption align="top" class="bg-warning p-1 fw-bold">DANH SÁCH DỰ ÁN</caption>
+      <thead>
+        <tr>
+          <th class="p-2">ID</th>
+          <th class="p-2">Tên Dự án</th>
+          <th class="p-2">Ngày bắt đầu</th>
+          <th class="text-end p-2">Tiền</th>
+          <th class="p-2">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let da of filtered_du_an">
+          <td class="p-2">{{da.id}}</td>
+          <td class="p-2">{{da.ten_du_an}}</td>
+          <td class="p-2">{{da.ngay_start | date: 'dd/MM/yyyy'}}</td>
+          <td class="text-end p-2">{{da.tien | number}} VNĐ</td>
+          <td class="p-2">
+            <button class="btn btn-primary me-2" (click)="suaDuAn(da.id)">Sửa</button>
+            <button class="btn btn-danger" (click)="xoaDuAn(da.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
